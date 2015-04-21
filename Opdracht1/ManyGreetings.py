@@ -1,2 +1,3 @@
 naam = input("What is your name? ")
-print('Hello, '+naam+'!')
+getal = input("How many greetings? ")
+print(getal +" x Hello, " + naam+'!')
