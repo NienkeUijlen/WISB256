@@ -20,5 +20,3 @@ fout=open(sys.argv[2], 'w')
 fout.write("\n".join(map(str, echtepriemgetallen)))
 
 print('Found ' + str(len(echtepriemgetallen)) + ' Prime numbers smaller than ' + sys.argv[1] + ' in ' + str(T2-T1) + ' sec.')
-
-#print(len(echtepriemgetallen))
