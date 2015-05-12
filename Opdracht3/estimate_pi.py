@@ -2,14 +2,17 @@ import math
 import random
 import sys
 
+if (len(sys.argv)<3) or (len(sys.argv)>4):          # foutmelding bij verkeerde input
+    print("Use: estimate_pi.py N L")
+    exit(1)
+
 L=float(sys.argv[2])       # lengte van de naald
 N=int(sys.argv[1])         # aantal herhalingen van het experiment
 if(len(sys.argv)>3):
     random.seed(float(sys.argv[3]))
 
-
 if L>1:
-    print('AssertionError: L should be smaller than 1')
+    print('AssertionError: L should be smaller than 1')     # foutmelding bij verkeerde input lengte naald
     exit(1)
 
 def drop_needle(L):
