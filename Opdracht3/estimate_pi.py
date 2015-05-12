@@ -29,4 +29,4 @@ while i<N:
     i=i+1
 
 print(hits, "hits in", N,  "tries")
-print('pi =', 2*L/(hits/N))
+print('Pi =', 2*L/(hits/N))
