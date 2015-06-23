@@ -4,26 +4,27 @@ import re
 from re import findall
 
 Lijst=[]
-
-def JoriEnNienkesSuperfunctieEnTinkaIsErNiet(domein):
-    myurl = "http://www." + domein
-    x = urllib.request.urlopen(myurl)
-    for i in re.findall('''href=["'](.[^"']+)["']''', str(x.read()), re.I):
-        if re.search("css$", i) == None and re.search("png$", i) == None and re.search("ico$", i) == None and re.search("/rss/", i) == None:
-            if re.search(domein, i) == None:
-                if re.match("/", i) == None:
-                    i = "/" + i
-                i = myurl + i
-                if (i in Lijst) == False:
-                    Lijst.append(i)
-                
-            elif re.search(domein, i):
-                if (i in Lijst) == False:
-                    Lijst.append(i)
-            else:
-                pass
+domein = 'boswell-beta.nl'
+def JoriEnNienkesSuperfunctieEnTinkaIsErNiet(myurl):
+    try:
+        x = urllib.request.urlopen(myurl)
+        for i in re.findall('''href=["'](.[^"']+)["']''', str(x.read()), re.I):
+            if re.search("css$", i) == None and re.search("png$", i) == None and re.search("ico$", i) == None and re.search("/rss/", i) == None:
+                if (re.search(domein, i) == None) and (re.match('www', i)==None) and (re.match('http', i) == None):
+                    if re.match("/", i) == None:
+                        i = "/" + i
+                    i = myurl + i
+                    if (i in Lijst) == False:
+                        Lijst.append(i)
+                    
+                elif re.search(domein, i):
+                    if (i in Lijst) == False:
+                        Lijst.append(i)
+                    
+    except:
+        pass
             
-JoriEnNienkesSuperfunctieEnTinkaIsErNiet("boswell-beta.nl")
+JoriEnNienkesSuperfunctieEnTinkaIsErNiet('http://www.boswell-beta.nl')
 
 print(Lijst)
 
